@@ -1,0 +1,10 @@
+html/video/
+html/img/
+*.mp4
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+node_modules/
+.claude/

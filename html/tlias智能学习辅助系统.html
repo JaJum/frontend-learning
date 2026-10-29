@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tlias智能学习辅助系统</title>
+  <style>
+    /* 顶部导航栏：灰色背景 */
+    .top-nav {
+      background-color: #808080;
+      overflow: hidden;
+    }
+    /* 标题与退出登录在同一行 */
+    .top-nav .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .top-nav h1 {
+      color: #ffffff;
+      margin: 0;
+      font-size: 24px;
+      font-family: "楷体";
+    }
+    .top-nav a {font-family: "楷体", "KaiTi", serif;
+      color: #ffffff;
+      text-decoration: none;
+    }
+    .top-nav a:hover {
+      opacity: 0.8;
+    }
+    /* 表单区域 */
+    .search-form {
+      background: #f5f5f5;
+      padding: 20px;
+      margin: 0;
+    }
+    .search-form form {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .search-form .form-item label {
+      font-weight: bold;
+      margin-right: 6px;
+    }
+    .search-form input,
+    .search-form select {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    .search-form select {
+      min-width: 140px;
+    }
+    .search-form .btn {
+      padding: 8px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #fff;
+    }
+    .search-form .btn-query {
+      background-color: #409EFF;
+    }
+    .search-form .btn-clear {
+      background-color: #909399;
+    }
+    .search-form .btn-query:hover,
+    .search-form .btn-clear:hover {
+      opacity: 0.85;
+    }
+    /* 表格区域 */
+    .table-section {
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: center;
+      font-size: 14px;
+    }
+    .data-table th,
+    .data-table td {
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+    }
+    .data-table th {
+      background-color: #f0f0f0;
+      font-weight: bold;
+    }
+    .data-table tbody tr:nth-child(even) {
+      background-color: #fafafa;
+    }
+
+    .data-table .avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      vertical-align: middle;
+      object-fit: cover;
+    }
+    .data-table .op-btn {
+      padding: 4px 14px;
+      border: none;
+      border-radius: 4px;
+      font-size: 13px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .data-table .btn-edit {
+      background-color: #409EFF;
+      margin-right: 6px;
+    }
+    .data-table .btn-delete {
+      background-color: #F56C6C;
+    }
+    .data-table .op-btn:hover {
+      opacity: 0.85;
+    }
+    /* 页脚版权区域 */
+    .footer {
+      background-color: #808080;
+      color: #ffffff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .footer p {
+      margin: 4px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <div class="top-nav">
+    <div class="container">
+      <h1>Tlias智能学习辅助系统</h1>
+      <a href="#">退出登录</a>
+    </div>
+  </div>
+  <!-- 表单区域 -->
+  <div class="search-form">
+    <form action="/search" method="post">
+      <div class="form-item">
+        <label for="name">姓名：</label>
+        <input type="text" id="name" placeholder="请输入姓名">
+      </div>
+      <div class="form-item">
+        <label for="gender">性别：</label>
+        <select id="gender">
+          <option value="">请选择</option>
+          <option value="男">男</option>
+          <option value="女">女</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <label for="post">职位：</label>
+        <select id="post">
+          <option value="">请选择</option>
+          <option value="讲师">讲师</option>
+          <option value="学工主管">学工主管</option>
+          <option value="教研主管">教研主管</option>
+          <option value="咨询师">咨询师</option>
+        </select>
+      </div>
+      <div class="form-item">
+        <button type="submit" class="btn btn-query">查询</button>
+        <button type="reset" class="btn btn-clear">清空</button>
+      </div>
+    </form>
+  </div>
+  <!-- 表格展示区域 -->
+  <div class="table-section">
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>姓名</th>
+          <th>性别</th>
+          <th>头像</th>
+          <th>职位</th>
+          <th>入职日期</th>
+          <th>最后操作时间</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>令狐冲</td>
+          <td>男</td>
+          <td><img class="avatar" src="https://picsum.photos/40/40?random=1" alt="令狐冲头像"></td>
+          <td>讲师</td>
+          <td>2023-03-15</td>
+          <td>2024-06-10 14:32</td>
+          <td>
+            <button class="op-btn btn-edit">编辑</button>
+            <button class="op-btn btn-delete">删除</button>
+          </td>
+        </tr>
+        <tr>
+          <td>任盈盈</td>
+          <td>女</td>
+          <td><img class="avatar" src="https://picsum.photos/40/40?random=2" alt="任盈盈头像"></td>
+          <td>学工主管</td>
+          <td>2022-08-01</td>
+          <td>2024-06-12 09:15</td>
+          <td>
+            <button class="op-btn btn-edit">编辑</button>
+            <button class="op-btn btn-delete">删除</button>
+          </td>
+        </tr>
+        <tr>
+          <td>岳不群</td>
+          <td>男</td>
+          <td><img class="avatar" src="https://picsum.photos/40/40?random=3" alt="岳不群头像"></td>
+          <td>教研主管</td>
+          <td>2021-11-20</td>
+          <td>2024-06-11 16:48</td>
+          <td>
+            <button class="op-btn btn-edit">编辑</button>
+            <button class="op-btn btn-delete">删除</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- 页脚版权区域 -->
+  <footer class="footer">
+    <p>帅气名字有限公司</p>
+    <p>版权所有 © 2024 帅气名字有限公司</p>
+  </footer>
+  <script>
+    var rows = document.querySelectorAll('.data-table tbody tr');
+    rows.forEach(function(row) {
+      row.addEventListener('mouseenter', function() {
+        this.style.backgroundColor = '#f2e2e2';
+      });
+      row.addEventListener('mouseleave', function() {
+        this.style.backgroundColor = '#ffffff';
+      });
+    });
+  </script>
+</body>
+</html>
